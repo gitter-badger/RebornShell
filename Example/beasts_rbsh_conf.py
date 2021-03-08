@@ -9,7 +9,7 @@ prompt = "ﬦ "
 
 # NOTE: Execution Zone
 command_to_exec_with = ""
-first_command_to_exec = "python3 ~/.config/startup.py"
+first_command_to_exec = "python3 ~/.config/RebornShell/startup.py"
 before_closing = "echo 'Goodbye!'"
 
 
