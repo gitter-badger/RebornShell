@@ -7,12 +7,12 @@ Installing is probably one of the most simple things!
 Here's a one-liner to do it all for you:
 
 ```SH
-git clone https://github.com/DeBeast591/RebornShell && mv rebornshell ~/.config/
+git clone https://github.com/DeBeast591/RebornShell && mv RebornShell ~/.config/
 ```
 
 Wherever your shell is defined, and replace it with:
 ```SH
-python3 /home/<Your Username>/.config/rebornshell/rbsh.py
+python3 /home/<Your Username>/.config/RebornShell/rbsh.py
 ```
 
 And that's it!
