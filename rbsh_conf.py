@@ -21,7 +21,7 @@ prompt = "$ "
 # default: nothing
 command_to_exec_with = ""
 # what command should be executed when RBSH first starts (Default: nothing)
-first_command_to_exec = "python3 startup.py"
+first_command_to_exec = ""
 # what command should be executed right before RBSH closes (Default: "echo 'Goodbye!'")
 before_closing = "echo 'Goodbye!'"
 
