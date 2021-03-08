@@ -1,0 +1,4 @@
+# test files and such
+/git_ignored_things
+# python's cache
+/__pycache__
