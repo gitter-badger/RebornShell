@@ -10,7 +10,6 @@ prompt_onetime_top = ""
 multiline_prompt = False
 # What the prompt is (Default: $)
 prompt = "$ "
-prompt = "ﬦ "
 
 
 # NOTE: Execution Zone
@@ -39,6 +38,5 @@ pwd_color.color = 91
 # NOTE: Symbols zone
 # what symbol should represent the home dir (Default: ~)
 home_symbol = "~"
-home_symbol = ""
 # what symbol should represent the / dir (Default: /)
 sys_root_symbol = "/"
