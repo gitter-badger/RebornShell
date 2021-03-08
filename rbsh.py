@@ -4,6 +4,27 @@ import rbsh_conf
 import rbsh_colors
 
 
+def get_pwd_colored():
+    try:
+        pwd = subprocess.check_output("pwd")
+        pwd = pwd.decode("UTF-8").strip("\n")
+        pwd = pwd.replace(os.path.expanduser("~"), rbsh_conf.home_symbol)
+        if pwd == "/":
+            pwd = rbsh_conf.sys_root_symbol
+        return rbsh_conf.pwd_color.getCode() + pwd + rbsh_colors.reset.getCode()
+    except subprocess.CalledProcessError as err:
+        print(err)
+
+
+def get_pwd():
+    try:
+        pwd = subprocess.check_output("pwd")
+        pwd = pwd.decode("UTF-8").strip("\n")
+        return pwd + "/"
+    except subprocess.CalledProcessError as err:
+        print(err)
+
+
 def execute(toexec):
     # exit
     if toexec == "exit":
@@ -23,7 +44,18 @@ def execute(toexec):
             os.chdir(".")
             return
         toexec = toexec.replace("cd", "")
-        os.chdir(toexec)
+        # no idea why, but there was a space always before the dir name
+        toexec = toexec.replace(" ", "")
+        if not toexec.startswith("/"):
+            try:
+                os.chdir(get_pwd() + toexec)
+            except FileNotFoundError:
+                print("Directory not found")
+            return
+        try:
+            os.chdir(toexec)
+        except FileNotFoundError:
+            print("Directory not found")
         return
 
     # execute!
@@ -32,17 +64,6 @@ def execute(toexec):
     else:
         os.system(rbsh_conf.command_to_exec_with + toexec)
 
-
-def get_pwd():
-    try:
-        pwd = subprocess.check_output("pwd")
-        pwd = pwd.decode("UTF-8").strip("\n")
-        pwd = pwd.replace(os.path.expanduser("~"), rbsh_conf.home_symbol)
-        if pwd == "/":
-            pwd = rbsh_conf.sys_root_symbol
-        return rbsh_conf.pwd_color.getCode() + pwd + rbsh_colors.reset.getCode()
-    except subprocess.CalledProcessError as err:
-        print(err)
 
 
 # print one-time prompt
@@ -57,7 +78,7 @@ while 1:
     if rbsh_conf.multiline_prompt:
         execute(input(rbsh_conf.prompt_color.getCode() +
                       "\n╭─[" +
-                      get_pwd() +
+                      get_pwd_colored() +
                       rbsh_conf.prompt_color.getCode() +
                       "]\n╰─" +
                       rbsh_conf.prompt +
@@ -67,7 +88,7 @@ while 1:
         execute(input("\n" +
                       rbsh_conf.prompt_color.getCode() +
                       "[" +
-                      get_pwd() +
+                      get_pwd_colored() +
                       rbsh_conf.prompt_color.getCode() +
                       "] " +
                       rbsh_conf.prompt +
