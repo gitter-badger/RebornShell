@@ -1,5 +1,6 @@
 import os
 import subprocess
+import readline
 import rbsh_conf
 import rbsh_colors
 
@@ -75,21 +76,27 @@ if rbsh_conf.first_command_to_exec is not None:
 # loop
 while 1:
     if rbsh_conf.multiline_prompt:
-        execute(input(rbsh_conf.prompt_color.getCode() +
-                      "\n╭─[" +
-                      get_pwd_colored() +
-                      rbsh_conf.prompt_color.getCode() +
-                      "]\n╰─" +
-                      rbsh_conf.prompt +
-                      rbsh_colors.reset
-                      ))
+        prompt = (rbsh_conf.prompt_color.getCode() +
+                  "\n╭─[" +
+                  get_pwd_colored() +
+                  rbsh_conf.prompt_color.getCode() +
+                  "]\n╰─" +
+                  rbsh_conf.prompt +
+                  rbsh_colors.reset
+                  )
     else:
-        execute(input("\n" +
-                      rbsh_conf.prompt_color.getCode() +
-                      "[" +
-                      get_pwd_colored() +
-                      rbsh_conf.prompt_color.getCode() +
-                      "] " +
-                      rbsh_conf.prompt +
-                      rbsh_colors.reset
-                      ))
+        prompt = ("\n" +
+                  rbsh_conf.prompt_color.getCode() +
+                  "[" +
+                  get_pwd_colored() +
+                  rbsh_conf.prompt_color.getCode() +
+                  "] " +
+                  rbsh_conf.prompt +
+                  rbsh_colors.reset
+                  )
+
+    # thank you so much @Zombie_Pigdragon#3468 (Discord) for helping me out!
+    # the line below this one is what made everything work perfectly!
+    readline.parse_and_bind("")  # no settings
+    action = input(prompt)
+    execute(action)
