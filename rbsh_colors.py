@@ -20,8 +20,7 @@ class Color:
         self.blk, self.frame, self.oline = blink, framed, overlined
 
     def getCode(self):
-        return (f"\033[{self.col};{self.bold};{self.uline};{self.blk};" +
-                f"{self.frame};{self.oline}m")
+        return f"\033[{self.col};{self.bold};{self.uline};{self.blk};{self.frame};{self.oline}m"
 
 
 # preset colors
@@ -49,9 +48,4 @@ background_presets = {
 
 
 # reset everything
-reset = Color()
-reset.color = 0
-reset.bold = 21
-reset.underline = 24
-reset.blink = 25
-reset.framed = 55
+reset = "\033[0m"

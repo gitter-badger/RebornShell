@@ -7,7 +7,7 @@ import rbsh_colors
 # what to print at the top, but only when RBSH first starts (Default: nothing)
 prompt_onetime_top = ""
 # Should the prompt be two lines? (Default: True)
-multiline_prompt = False
+multiline_prompt = True
 # What the prompt is (Default: $)
 prompt = "$ "
 
@@ -28,11 +28,9 @@ before_closing = "echo 'Goodbye!'"
 
 # NOTE: Colors Zone
 # prompt color
-prompt_color = rbsh_colors.Color()
-prompt_color.bold = 1
+prompt_color = rbsh_colors.foreground_presets["blue"]
 # the color of the pwd
-pwd_color = rbsh_colors.Color()
-pwd_color.color = 91
+pwd_color = rbsh_colors.foreground_presets["red"]
 
 
 # NOTE: Symbols zone

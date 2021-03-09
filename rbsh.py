@@ -11,8 +11,7 @@ def get_pwd_colored():
         pwd = pwd.replace(os.path.expanduser("~"), rbsh_conf.home_symbol)
         if pwd == "/":
             pwd = rbsh_conf.sys_root_symbol
-        return (rbsh_conf.pwd_color.getCode() + pwd +
-                rbsh_colors.reset.getCode())
+        return rbsh_conf.pwd_color.getCode() + pwd + rbsh_colors.reset
     except subprocess.CalledProcessError as err:
         print(err)
 
@@ -82,9 +81,9 @@ while 1:
                       rbsh_conf.prompt_color.getCode() +
                       "]\n╰─" +
                       rbsh_conf.prompt +
-                      rbsh_colors.reset.getCode()
+                      rbsh_colors.reset
                       ))
-    elif not rbsh_conf.multiline_prompt:
+    else:
         execute(input("\n" +
                       rbsh_conf.prompt_color.getCode() +
                       "[" +
@@ -92,5 +91,5 @@ while 1:
                       rbsh_conf.prompt_color.getCode() +
                       "] " +
                       rbsh_conf.prompt +
-                      rbsh_colors.reset.getCode()
+                      rbsh_colors.reset
                       ))
