@@ -2,3 +2,7 @@
 /git_ignored_things
 # python's cache
 /__pycache__
+# python venv
+/env
+# vscode things
+/.vscode

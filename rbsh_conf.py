@@ -22,7 +22,7 @@ prompt = "$ "
 command_to_exec_with = ""
 # what command should be executed when RBSH first starts (Default: nothing)
 first_command_to_exec = ""
-# what command should be executed right before RBSH closes (Default: "echo 'Goodbye!'")
+# what command will be executed before RBSH closes (Default: "echo 'Goodbye!'")
 before_closing = "echo 'Goodbye!'"
 
 

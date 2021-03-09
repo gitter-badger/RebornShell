@@ -14,11 +14,14 @@ class Color:
     # 53 = on / 55 = off
     overlined = 55
 
-    def __init__(self, color=34, bold=21, underline=24, blink=25, framed=54, overlined=55):
-        self.color, self.bold, self.underline, self.blink, self.framed, self.overlined = color, bold, underline, blink, framed, overlined
+    def __init__(self, color=34, bold=21, underline=24, blink=25, framed=54,
+                 overlined=55):
+        self.col, self.bold, self.uline = color, bold, underline
+        self.blk, self.frame, self.oline = blink, framed, overlined
 
     def getCode(self):
-        return f"\033[{self.color};{self.bold};{self.underline};{self.blink};{self.framed}m"
+        return (f"\033[{self.col};{self.bold};{self.uline};{self.blk};" +
+                f"{self.frame};{self.oline}m")
 
 
 # preset colors

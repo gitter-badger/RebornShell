@@ -11,7 +11,8 @@ def get_pwd_colored():
         pwd = pwd.replace(os.path.expanduser("~"), rbsh_conf.home_symbol)
         if pwd == "/":
             pwd = rbsh_conf.sys_root_symbol
-        return rbsh_conf.pwd_color.getCode() + pwd + rbsh_colors.reset.getCode()
+        return (rbsh_conf.pwd_color.getCode() + pwd +
+                rbsh_colors.reset.getCode())
     except subprocess.CalledProcessError as err:
         print(err)
 
@@ -29,7 +30,7 @@ def execute(toexec):
     # exit
     if toexec == "exit":
         if rbsh_conf.before_closing is not None:
-            os.system(rbsh_conf.command_to_exec_with + rbsh_conf.before_closing)
+            os.system(rbsh_conf.before_closing)
         quit()
 
     # cd
@@ -63,7 +64,6 @@ def execute(toexec):
         os.system(toexec)
     else:
         os.system(rbsh_conf.command_to_exec_with + toexec)
-
 
 
 # print one-time prompt
