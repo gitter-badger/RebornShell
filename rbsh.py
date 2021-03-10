@@ -30,7 +30,8 @@ def execute(toexec):
     # exit
     if toexec == "exit":
         if rbsh_conf.before_closing is not None:
-            os.system(rbsh_conf.before_closing)
+            # os.system(rbsh_conf.before_closing)
+            subprocess.run(rbsh_conf.before_closing.split())
         quit()
 
     # cd
@@ -61,9 +62,11 @@ def execute(toexec):
 
     # execute!
     if rbsh_conf.command_to_exec_with is None:
-        os.system(toexec)
+        # os.system(toexec)
+        subprocess.run(toexec.split())
     else:
-        os.system(rbsh_conf.command_to_exec_with + toexec)
+        # os.system(rbsh_conf.command_to_exec_with + toexec)
+        subprocess.run(rbsh_conf.command_to_exec_with.split() + toexec.split())
 
 
 # print one-time prompt
@@ -108,4 +111,5 @@ while 1:
                 new_action[new_action.index(key)] = value
     action = " ".join(action)
     new_action = " ".join(new_action)
+    # execute the command
     execute(new_action)
