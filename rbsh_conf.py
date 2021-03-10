@@ -38,3 +38,11 @@ pwd_color = rbsh_colors.foreground_presets["red"]
 home_symbol = "~"
 # what symbol should represent the / dir (Default: /)
 sys_root_symbol = "/"
+
+# NOTE: Alias zone
+# define aliases in this dict
+alias_list = {
+    # alias: command
+    "py": "python3",
+    "py2": "python2"
+}

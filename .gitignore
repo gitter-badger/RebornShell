@@ -6,3 +6,5 @@
 /env
 # vscode things
 /.vscode
+# pycharm things
+/.idea

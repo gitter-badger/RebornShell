@@ -99,4 +99,13 @@ while 1:
     # the line below this one is what made everything work perfectly!
     readline.parse_and_bind("")  # no settings
     action = input(prompt)
-    execute(action)
+
+    # aliases, get over how messy this code is
+    new_action = action.split()
+    for x in action.split():
+        for key, value in rbsh_conf.alias_list.items():
+            if x == key:
+                new_action[new_action.index(key)] = value
+    action = " ".join(action)
+    new_action = " ".join(new_action)
+    execute(new_action)
