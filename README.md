@@ -1,6 +1,8 @@
 # RBSH - ReBorn SHell
 This is an attempt at making a complete shell for Linux that is fast, tiny in size, and powerful
 
+And by tiny, I mean as of [this commit](https://github.com/DeBeast591/RebornShell/commit/87af93d6e0babaaaa33d17176003de0676defea2), it's **179** lines SLOC! (Excluding the Example/ folder and the README)
+
 # Installing
 Installing is probably one of the most simple things!
 
