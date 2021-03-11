@@ -31,8 +31,8 @@ def execute(toexec):
     if toexec == "exit":
         if rbsh_conf.before_closing is not None:
             # os.system(rbsh_conf.before_closing)
-            subprocess.run(rbsh_conf.before_closing.split())
-        quit()
+            subprocess.run(rbsh_conf.before_closing.split(), check=False)
+        exit()
 
     # cd
     if toexec.startswith("cd"):
@@ -63,10 +63,10 @@ def execute(toexec):
     # execute!
     if rbsh_conf.command_to_exec_with is None:
         # os.system(toexec)
-        subprocess.run(toexec.split())
+        subprocess.run(toexec.split(), check=False)
     else:
         # os.system(rbsh_conf.command_to_exec_with + toexec)
-        subprocess.run(rbsh_conf.command_to_exec_with.split() + toexec.split())
+        subprocess.run(rbsh_conf.command_to_exec_with.split() + toexec.split(), check=False)
 
 
 # print one-time prompt

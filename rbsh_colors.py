@@ -1,19 +1,4 @@
 class Color:
-    # the main color
-    # many... many values
-    color = 34
-    # 1 = on / 21 = off
-    bold = 21
-    # 4 = on / 24 = off
-    underline = 24
-    # 5 = slow blink, 6 = fast blink / 25 = blink off
-    blink = 25
-    # 51 = framed, 52 = encircled / 54 = not framed or
-    # encircled
-    framed = 54
-    # 53 = on / 55 = off
-    overlined = 55
-
     def __init__(self, color=34, bold=21, underline=24, blink=25, framed=54,
                  overlined=55):
         self.col, self.bold, self.uline = color, bold, underline
