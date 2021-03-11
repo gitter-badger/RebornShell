@@ -18,10 +18,10 @@ prompt = "$ "
 # example: exec_with = "sh -c"
 # that would make every command be executed as if it was:
 # `sh -c echo 'hello world'`
-# default: nothing
-exec_with = ""
-# what command should be executed when RBSH first starts (Default: nothing)
-first_cmd = ""
+# default: None
+exec_with = None
+# what command should be executed when RBSH first starts (Default: None)
+first_cmd = None
 # what command will be executed before RBSH closes (Default: "echo 'Goodbye!'")
 before_closing = "echo 'Goodbye!'"
 
