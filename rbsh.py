@@ -6,9 +6,13 @@ import rbsh_conf
 import rbsh_colors
 
 
+#TODO: Read https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html
+# apparently subproccess.run makes codefactor+bandit yell at me, so I'm going to try and fix that.
+
+
 def get_pwd_colored():
     try:
-        pwd = subprocess.check_output("pwd")
+        pwd = subprocess.check_output("/bin/pwd")
         pwd = pwd.decode("UTF-8").strip("\n")
         pwd = pwd.replace(os.path.expanduser("~"), rbsh_conf.home_symbol)
         if pwd == "/":
@@ -20,7 +24,7 @@ def get_pwd_colored():
 
 def get_pwd():
     try:
-        pwd = subprocess.check_output("pwd")
+        pwd = subprocess.check_output("/bin/pwd")
         pwd = pwd.decode("UTF-8").strip("\n")
         return pwd + "/"
     except subprocess.CalledProcessError as err:
@@ -32,7 +36,7 @@ def execute(toexec):
     if toexec == "exit":
         if rbsh_conf.before_closing is not None:
             # os.system(rbsh_conf.before_closing)
-            subprocess.run(rbsh_conf.before_closing.split(), check=False)
+            subprocess.run(rbsh_conf.before_closing.split(), check=False, shell=False)
         sys.exit()
 
     # cd
@@ -64,10 +68,10 @@ def execute(toexec):
     # execute!
     if rbsh_conf.command_to_exec_with is None:
         # os.system(toexec)
-        subprocess.run(toexec.split(), check=False)
+        subprocess.run(toexec.split(), check=False, shell=False)
     else:
         # os.system(rbsh_conf.command_to_exec_with + toexec)
-        subprocess.run(rbsh_conf.command_to_exec_with.split() + toexec.split(), check=False)
+        subprocess.run(rbsh_conf.command_to_exec_with.split() + toexec.split(), check=False, shell=False)
 
 
 # print one-time prompt
@@ -75,7 +79,7 @@ print(rbsh_conf.prompt_onetime_top)
 
 # execute first_command_to_exec
 if rbsh_conf.first_command_to_exec is not None:
-    os.system(rbsh_conf.command_to_exec_with + rbsh_conf.first_command_to_exec)
+    subprocess.tun(command_to_exec_with.split() + rbsh_conf.first_command_to_exec.split(), check=False, shell=False)
 
 # loop
 while 1:
