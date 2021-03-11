@@ -1,0 +1,19 @@
+version = 1
+
+test_patterns = [
+    "rbsh.py",
+    "rbsh_colors.py"
+]
+
+exclude_patterns = [
+    "Example/*",
+    "README.md",
+    ".gitignore"
+]
+
+[[analyzers]]
+name = "python"
+enabled = true
+
+  [analyzers.meta]
+  runtime_version = "3.x.x"

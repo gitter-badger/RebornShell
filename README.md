@@ -1,3 +1,6 @@
+[![DeepSource](https://deepsource.io/gh/DeBeast591/RebornShell.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/DeBeast591/RebornShell/?ref=repository-badge)
+[![DeepSource](https://deepsource.io/gh/DeBeast591/RebornShell.svg/?label=resolved+issues&show_trend=true)](https://deepsource.io/gh/DeBeast591/RebornShell/?ref=repository-badge)
+
 # RBSH - ReBorn SHell
 This is an attempt at making a complete shell for Linux that is fast, tiny in size, and powerful
 
