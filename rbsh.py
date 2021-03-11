@@ -79,7 +79,7 @@ print(rbsh_conf.prompt_onetime_top)
 
 # execute first_command_to_exec
 if rbsh_conf.first_command_to_exec is not None:
-    subprocess.tun(command_to_exec_with.split() + rbsh_conf.first_command_to_exec.split(), check=False, shell=False)
+    subprocess.run(command_to_exec_with.split() + rbsh_conf.first_command_to_exec.split(), check=False, shell=False)
 
 # loop
 while 1:
