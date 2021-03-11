@@ -1,4 +1,5 @@
 import os
+import sys
 import subprocess
 import readline
 import rbsh_conf
@@ -32,7 +33,7 @@ def execute(toexec):
         if rbsh_conf.before_closing is not None:
             # os.system(rbsh_conf.before_closing)
             subprocess.run(rbsh_conf.before_closing.split(), check=False)
-        exit()
+        sys.exit()
 
     # cd
     if toexec.startswith("cd"):
