@@ -36,9 +36,11 @@ def execute(toexec):
     # exit
     if toexec == "exit":
         if rbsh_conf.before_closing is not None:
-            subprocess.run(rbsh_conf.before_closing.split(), check=False,
-                           shell=False)
-
+            try:
+                subprocess.run(rbsh_conf.before_closing.split(), check=False,
+                               shell=False)
+            except Exception:
+                pass
         sys.exit()
 
     # cd
@@ -71,11 +73,14 @@ def execute(toexec):
         return
 
     # execute!
-    if rbsh_conf.exec_with is None:
-        subprocess.run(toexec.split(), check=False, shell=False)
-    else:
-        subprocess.run(rbsh_conf.exec_with.split() + toexec.split(),
-                       check=False, shell=False)
+    try:
+        if rbsh_conf.exec_with is None:
+            subprocess.run(toexec.split(), check=False, shell=False)
+        else:
+            subprocess.run(rbsh_conf.exec_with.split() + toexec.split(),
+                           check=False, shell=False)
+    except Exception:
+        pass
 
 
 # NOTE: Startup
