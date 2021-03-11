@@ -6,7 +6,7 @@ import rbsh_conf
 import rbsh_colors
 
 
-#TODO: Read https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html
+# TODO: Read https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html
 # apparently subproccess.run makes codefactor+bandit yell at me, so I'm going to try and fix that.
 
 
@@ -14,10 +14,10 @@ def get_pwd_colored():
     try:
         pwd = subprocess.check_output("/bin/pwd")
         pwd = pwd.decode("UTF-8").strip("\n")
-        pwd = pwd.replace(os.path.expanduser("~"), rbsh_conf.home_symbol)
-        if pwd == "/":
-            pwd = rbsh_conf.sys_root_symbol
-        return rbsh_conf.pwd_color.getCode() + pwd + rbsh_colors.reset
+        result = pwd.replace(os.path.expanduser("~"), rbsh_conf.home_symbol)
+        if result == "/":
+            result = rbsh_conf.sys_root_symbol
+        return rbsh_conf.pwd_color.getCode() + result + rbsh_colors.reset
     except subprocess.CalledProcessError as err:
         print(err)
 
