@@ -1,14 +1,17 @@
+# NOTE: Color class
 class Color:
-    def __init__(self, color=34, bold=21, underline=24, blink=25, framed=54,
-                 overlined=55):
-        self.col, self.bold, self.uline = color, bold, underline
-        self.blk, self.frame, self.oline = blink, framed, overlined
+    def __init__(self, color=34, bold=21, underline=24, blink=25):
+        self.col = color
+        self.bold = bold
+        self.uline = underline
+        self.blk = blink
 
     def getCode(self):
-        return f"\033[{self.col};{self.bold};{self.uline};{self.blk};{self.frame};{self.oline}m"
+        return f"\033[{self.col};{self.bold};{self.uline};{self.blk}m"
 
 
-# preset colors
+# NOTE: Presets
+# foregrounds
 foreground_presets = {
     "black": Color(color=30),
     "red": Color(color=31),
@@ -20,6 +23,7 @@ foreground_presets = {
     "white": Color(color=37)
 }
 
+# backgrounds
 background_presets = {
     "black": Color(color=40),
     "red": Color(color=41),
@@ -30,7 +34,6 @@ background_presets = {
     "cyan": Color(color=46),
     "white": Color(color=47)
 }
-
 
 # reset everything
 reset = "\033[0m"

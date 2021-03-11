@@ -15,13 +15,13 @@ prompt = "$ "
 # NOTE: Execution Zone
 # what should be used to execute from the `input(prompt)`
 # if it's set to nothing then it's just with `os.system()`
-# example: command_to_exec_with = "sh -c"
+# example: exec_with = "sh -c"
 # that would make every command be executed as if it was:
 # `sh -c echo 'hello world'`
 # default: nothing
-command_to_exec_with = ""
+exec_with = ""
 # what command should be executed when RBSH first starts (Default: nothing)
-first_command_to_exec = ""
+first_cmd = ""
 # what command will be executed before RBSH closes (Default: "echo 'Goodbye!'")
 before_closing = "echo 'Goodbye!'"
 
