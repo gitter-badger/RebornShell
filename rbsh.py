@@ -39,7 +39,7 @@ def execute(toexec):
             try:
                 subprocess.run(rbsh_conf.before_closing.split(), check=False,
                                shell=False)
-            except Exception:
+            except FileNotFoundError:
                 pass
         sys.exit()
 
@@ -79,7 +79,7 @@ def execute(toexec):
         else:
             subprocess.run(rbsh_conf.exec_with.split() + toexec.split(),
                            check=False, shell=False)
-    except Exception:
+    except FileNotFoundError:
         pass
 
 
