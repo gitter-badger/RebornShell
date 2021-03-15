@@ -1,10 +1,11 @@
 import rbsh_colors
 
+
 # NOTE: Prompt Zone
 prompt_onetime_top = ""
-multiline_prompt = False
+multiline_prompt = True
 prompt = (rbsh_colors.foreground_presets["blue"].getCode() +
-          "─ﬦ ")
+          "ﬦ ")
 prompt_head = (rbsh_colors.foreground_presets["red"].getCode() +
                "" +
                rbsh_colors.reset)
@@ -15,13 +16,14 @@ pyvenv_text = (rbsh_colors.background_presets["red"].getCode() +
                rbsh_colors.foreground_presets["blue"].getCode()
                + " " +
                rbsh_colors.foreground_presets["yellow"].getCode() +
-               " Pyenv" +
+               " Pyvenv" +
                rbsh_colors.reset +
                rbsh_colors.background_presets["red"].getCode() +
                "")
 seperator_char = (rbsh_colors.foreground_presets["red"].getCode() +
                   " " +
                   rbsh_colors.reset)
+
 
 # NOTE: Execution Zone
 exec_with = ""
@@ -39,8 +41,10 @@ home_symbol = "ﴤ"
 sys_root_symbol = "ﳎ"
 path_slash_symbol = "/"
 
+
 # NOTE: Alias zone
 alias_list = {
     "py": "python3",
-    "py2": "python2"
+    "py2": "python2",
+    "startup": "python3 /home/imahaxer/.config/RebornShell/startup.py"
 }
