@@ -28,7 +28,7 @@ def get_pwd():
     try:
         pwd = subprocess.check_output("/bin/pwd")
         pwd = pwd.decode("UTF-8").strip("\n")
-        return pwd
+        return pwd + "/"
     except subprocess.CalledProcessError as err:
         print(err)
 
@@ -74,9 +74,10 @@ def execute(toexec):
 
         toexec = toexec.replace("cd", "")
         # no idea why, but there was a space always before the dir name
-        toexec = toexec.replace(" ", "")
+        toexec = toexec.replace(" ", "", 1)
         if not toexec.startswith("/"):
             try:
+                print(get_pwd() + toexec)
                 os.chdir(get_pwd() + toexec)
             except FileNotFoundError:
                 print("Directory not found")
