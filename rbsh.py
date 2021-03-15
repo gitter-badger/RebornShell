@@ -17,7 +17,9 @@ def get_pwd_colored():
         if result == "/":
             result = rbsh_conf.sys_root_symbol
 
-        return rbsh_conf.pwd_color.getCode() + result + rbsh_colors.reset
+        result = rbsh_conf.pwd_color + result + rbsh_colors.reset
+
+        return result.replace("/", rbsh_conf.path_slash_symbol, 9999)
     except subprocess.CalledProcessError as err:
         print(err)
 
@@ -27,7 +29,28 @@ def get_pwd():
         pwd = subprocess.check_output("/bin/pwd")
         pwd = pwd.decode("UTF-8").strip("\n")
 
-        return pwd + "/"
+        result = pwd.replace(os.path.expanduser("~"), rbsh_conf.home_symbol)
+
+        if result == "/":
+            result = rbsh_conf.sys_root_symbol
+
+        result = rbsh_conf.pwd_color + result + rbsh_colors.reset
+
+        return result.replace("/", rbsh_conf.path_slash_symbol, 9999)
+    except subprocess.CalledProcessError as err:
+        print(err)
+
+
+def is_venv():
+    return (hasattr(sys, 'real_prefix') or
+            (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix))
+
+
+def get_py_venv():
+    try:
+        if is_venv():
+            return rbsh_conf.seperator_char + rbsh_conf.pyvenv_text
+        return ""
     except subprocess.CalledProcessError as err:
         print(err)
 
@@ -40,7 +63,7 @@ def execute(toexec):
                 subprocess.run(rbsh_conf.before_closing.split(), check=False,
                                shell=False)
             except FileNotFoundError:
-                pass
+                print("RBSH: Error, command not found.")
         sys.exit()
 
     # cd
@@ -80,7 +103,7 @@ def execute(toexec):
             subprocess.run(rbsh_conf.exec_with.split() + toexec.split(),
                            check=False, shell=False)
     except FileNotFoundError:
-        pass
+        print("RBSH: Error, command not found.")
 
 
 # NOTE: Startup
@@ -94,28 +117,37 @@ if rbsh_conf.first_cmd is not None:
 
 # NOTE: Mainloop
 while 1:
+    # this is getting large... 
+    # here's the prompt, I'd say you should just leave it alone.
     if rbsh_conf.multiline_prompt:
-        prompt = (rbsh_conf.prompt_color.getCode() +
-                  "\n╭─[" +
-                  get_pwd_colored() +
-                  rbsh_conf.prompt_color.getCode() +
-                  "]\n╰─" +
-                  rbsh_conf.prompt +
-                  rbsh_colors.reset
+        prompt = (str(rbsh_conf.prompt_color) +
+                  str("\n╭─") +
+                  str(rbsh_conf.prompt_tail) +
+                  str(get_pwd_colored()) +
+                  str(rbsh_colors.reset) +
+                  str(get_py_venv()) +
+                  str(rbsh_conf.prompt_color) +
+                  str(rbsh_conf.prompt_head) +
+                  str(rbsh_conf.prompt_color) +
+                  str("\n╰─") +
+                  str(rbsh_conf.prompt) +
+                  str(rbsh_colors.reset)
                   )
     else:
-        prompt = ("\n" +
-                  rbsh_conf.prompt_color.getCode() +
-                  "[" +
-                  get_pwd_colored() +
-                  rbsh_conf.prompt_color.getCode() +
-                  "] " +
-                  rbsh_conf.prompt +
-                  rbsh_colors.reset
+        prompt = (str("\n") +
+                  str(rbsh_conf.prompt_color) +
+                  str(rbsh_conf.prompt_tail) +
+                  str(get_pwd_colored()) +
+                  str(rbsh_colors.reset) +
+                  str(get_py_venv()) +
+                  str(rbsh_conf.prompt_head) +
+                  str(rbsh_conf.prompt_color) +
+                  str(rbsh_conf.prompt) +
+                  str(rbsh_colors.reset)
                   )
 
     # thank you so much @Zombie_Pigdragon#3468 (Discord) for helping me out!
-    # the line below this one is what made everything work perfectly!
+    # the line below this one is what made everything work great!
     readline.parse_and_bind("")  # no settings
     action = input(prompt)
 
@@ -127,5 +159,6 @@ while 1:
                 new_action[new_action.index(key)] = value
     action = " ".join(action)
     new_action = " ".join(new_action)
+
     # execute the command
     execute(new_action)
