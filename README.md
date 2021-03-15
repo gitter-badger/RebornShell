@@ -7,6 +7,8 @@ This is an attempt at making a complete shell for Linux that is fast, tiny in si
 
 And by tiny, I mean as of [this commit](https://github.com/DeBeast591/RebornShell/commit/87af93d6e0babaaaa33d17176003de0676defea2), it's **179** lines SLOC! (Excluding the Example/ folder and the README)
 
+And as of [this commit](https://github.com/DeBeast591/RebornShell/commit/74099b76a478dbdaab527aeb30785865884a7396) it's only **220** lines SLOC. (Again excluding Example/* and the README) For how much it's grown since the commit in the line above this, it seems to be growing (In terms of function and SLOC) at a pretty nice rate!
+
 
 # Installing
 Installing is probably one of the most simple things!
