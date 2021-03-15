@@ -117,7 +117,7 @@ if rbsh_conf.first_cmd is not None:
 
 # NOTE: Mainloop
 while 1:
-    # this is getting large... 
+    # this is getting large...
     # here's the prompt, I'd say you should just leave it alone.
     if rbsh_conf.multiline_prompt:
         prompt = (str(rbsh_conf.prompt_color) +

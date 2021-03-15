@@ -11,13 +11,23 @@ multiline_prompt = True
 # what the prompt is (Default: $)
 prompt = "$ "
 # prompt head
-prompt_head = rbsh_colors.foreground_presets["magenta"].getCode() + "]" + rbsh_colors.reset
+prompt_head = (rbsh_colors.foreground_presets["magenta"].getCode() +
+               "]" +
+               rbsh_colors.reset)
+
 # prompt tail
-prompt_tail = rbsh_colors.foreground_presets["magenta"].getCode() + "[" + rbsh_colors.reset
+prompt_tail = (rbsh_colors.foreground_presets["magenta"].getCode() +
+               "[" +
+               rbsh_colors.reset)
+
 # python venv text
-pyvenv_text = rbsh_colors.foreground_presets["blue"].getCode() + "Py" + rbsh_colors.foreground_presets["yellow"].getCode() + "env"
+pyvenv_text = (rbsh_colors.foreground_presets["blue"].getCode() + "Py" +
+               rbsh_colors.foreground_presets["yellow"].getCode() + "env")
+
 # seperator character (Default: |)
-seperator_char = rbsh_colors.foreground_presets["magenta"].getCode() + " | " + rbsh_colors.reset
+seperator_char = (rbsh_colors.foreground_presets["magenta"].getCode() +
+                  " | " +
+                  rbsh_colors.reset)
 
 
 # NOTE: Execution Zone
