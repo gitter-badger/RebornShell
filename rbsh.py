@@ -77,7 +77,6 @@ def execute(toexec):
         toexec = toexec.replace(" ", "", 1)
         if not toexec.startswith("/"):
             try:
-                print(get_pwd() + toexec)
                 os.chdir(get_pwd() + toexec)
             except FileNotFoundError:
                 print("Directory not found")
