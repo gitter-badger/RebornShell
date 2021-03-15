@@ -3,9 +3,7 @@ import rbsh_colors
 # NOTE: Prompt Zone
 prompt_onetime_top = ""
 multiline_prompt = False
-prompt = (rbsh_colors.foreground_presets["red"].getCode() +
-          "" +
-          rbsh_colors.foreground_presets["blue"].getCode() +
+prompt = (rbsh_colors.foreground_presets["blue"].getCode() +
           "─ﬦ ")
 prompt_head = (rbsh_colors.foreground_presets["red"].getCode() +
                "" +
@@ -17,14 +15,17 @@ pyvenv_text = (rbsh_colors.background_presets["red"].getCode() +
                rbsh_colors.foreground_presets["blue"].getCode()
                + " " +
                rbsh_colors.foreground_presets["yellow"].getCode() +
-               " Pyenv")
+               " Pyenv" +
+               rbsh_colors.reset +
+               rbsh_colors.background_presets["red"].getCode() +
+               "")
 seperator_char = (rbsh_colors.foreground_presets["red"].getCode() +
                   " " +
                   rbsh_colors.reset)
 
 # NOTE: Execution Zone
-command_to_exec_with = None
-first_command_to_exec = "python3 ~/.config/RebornShell/startup.py"
+exec_with = ""
+first_cmd = "python3 /home/imahaxer/.config/RebornShell/startup.py"
 before_closing = "echo Goodbye!"
 
 
