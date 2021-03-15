@@ -1,6 +1,6 @@
 [![DeepSource](https://deepsource.io/gh/DeBeast591/RebornShell.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/DeBeast591/RebornShell/?ref=repository-badge)
 [![DeepSource](https://deepsource.io/gh/DeBeast591/RebornShell.svg/?label=resolved+issues&show_trend=true)](https://deepsource.io/gh/DeBeast591/RebornShell/?ref=repository-badge)
-[![CodeFactor](https://www.codefactor.io/repository/github/debeast591/rebornshell/badge/master)](https://www.codefactor.io/repository/github/debeast591/rebornshell/overview/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/debeast591/rebornshell/badge/master)](https://www.codefactor.io/repository/github/debeast591/rebornshell/overview/master) [![Join the chat at https://gitter.im/RebornShell/community](https://badges.gitter.im/RebornShell/community.svg)](https://gitter.im/RebornShell/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # RBSH - ReBorn SHell
 This is an attempt at making a complete shell for Linux that is fast, tiny in size, and powerful
