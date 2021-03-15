@@ -28,15 +28,7 @@ def get_pwd():
     try:
         pwd = subprocess.check_output("/bin/pwd")
         pwd = pwd.decode("UTF-8").strip("\n")
-
-        result = pwd.replace(os.path.expanduser("~"), rbsh_conf.home_symbol)
-
-        if result == "/":
-            result = rbsh_conf.sys_root_symbol
-
-        result = rbsh_conf.pwd_color + result + rbsh_colors.reset
-
-        return result.replace("/", rbsh_conf.path_slash_symbol, 9999)
+        return pwd
     except subprocess.CalledProcessError as err:
         print(err)
 
