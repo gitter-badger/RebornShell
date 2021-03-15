@@ -7,6 +7,7 @@ This is an attempt at making a complete shell for Linux that is fast, tiny in si
 
 And by tiny, I mean as of [this commit](https://github.com/DeBeast591/RebornShell/commit/87af93d6e0babaaaa33d17176003de0676defea2), it's **179** lines SLOC! (Excluding the Example/ folder and the README)
 
+
 # Installing
 Installing is probably one of the most simple things!
 
@@ -25,5 +26,25 @@ And that's it!
 
 If it fails, make an issue on the issue tracker so you can get help or it can be fixed.
 
+
 # ~~Doing my work for me~~ Contributing
 Just make a PR or an issue.
+
+
+# Config
+The config file for this is just a Python file at the moment, and I've made sure that just about everything in RBSH is configurable.
+
+There are also plenty of comments that should help you at least a little bit when making the configuration
+
+I recommend you take a look at `rbsh_colors.py` as well, that way you know about the `Color` class and the preset colors.
+
+If you have a Nerd Font, then you can use those characters as well. (If supported by your terminal.)
+
+
+# Examples
+My personal config:
+
+![Personal Config](Assets/BeastsConfigPicture.png "Title")
+
+
+If you've made a config that you want here, please show me!
